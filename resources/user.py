@@ -2,6 +2,28 @@ import sqlite3
 from flask_restful import Resource, reqparse
 from models.user import UserModel
 
+class UserLogin(Resource):
+
+    parser = reqparse.RequestParser()
+    parser.add_argument('username',
+        type=str,
+        required=True,
+        help="This field cannot be blank."
+    )
+    parser.add_argument('password',
+        type=str,
+        required=True,
+        help="This field cannot be blank."
+    )
+
+    def get(self):
+        data = UserLogin.parser.parse_args()
+        user = UserModel.find_by_username(data['username'])
+        if user:
+            return user.json()
+        else:
+            return {"message": "user not found"}, 400
+
 class UserRegister(Resource):
 
     parser = reqparse.RequestParser()
