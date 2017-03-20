@@ -44,7 +44,20 @@ class UserModel(db.Model):
         db.session.commit()
 
     def json(self):
-        return {'username': self.username}
+        return {'username': self.username, 'name': self.name,
+        'gender': self.gender, 'interested_in': self.interested_in,
+        'latitude': self.latitude, 'longitude': self.longitude,
+        'image_url': self.image_url, 'hangout1': self.hangout1,
+        'hangout2': self.hangout2, 'hangout3': self.hangout3,
+        'hangout4': self.hangout4, 'active': self.active,
+        'authentication_method': self.authentication_method, 'notification': self.notification,
+        'login': self.login, 'hilook_visible': self.hilook_visible,
+        'hangouts_visible': self.hangouts_visible, 'max_distance': self.max_distance,
+        'hide_ads': self.hide_ads, 'registration_ids': self.registration_ids,
+        'feet_or_meter': self.feet_or_meter, 'tips': self.tips,
+        'email': self.email, 'birthdate': self.birthdate,
+        'city': self.city, 'country': self.country,
+        'token': self.token}
 
     @classmethod
     def find_by_username(cls, username):
