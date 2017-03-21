@@ -59,6 +59,11 @@ class UserModel(db.Model):
         'city': self.city, 'country': self.country,
         'token': self.token}
 
+    def checkPassword(self, password):
+        if self.password == password:
+            return true
+        return false
+
     @classmethod
     def find_by_username(cls, username):
         return cls.query.filter_by(username=username).first()

@@ -20,7 +20,10 @@ class UserLogin(Resource):
         data = UserLogin.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
-            return user.json(), 200
+            if user.checkPassword(data['password']):
+                return user.json(), 200
+            else:
+                return {"message": "wrong password"}, 400
         else:
             return {"message": "user not found"}, 400
 
