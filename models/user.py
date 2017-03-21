@@ -61,8 +61,8 @@ class UserModel(db.Model):
 
     def checkPassword(self, password):
         if self.password == password:
-            return true
-        return false
+            return True
+        return False
 
     @classmethod
     def find_by_username(cls, username):
