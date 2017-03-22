@@ -4,8 +4,8 @@ class VersionModel(db.Model):
     __tablename__ = 'version'
 
     id = db.Column(db.Integer, primary_key=True)
-    android_version = db.Column(db.String)
-    ios_version = db.Column(db.String)
+    android_version = db.Column(db.Integer)
+    ios_version = db.Column(db.Integer)
 
     def __init__(self, android_version, ios_version):
         self.android_version = android_version
