@@ -6,7 +6,7 @@ class UserModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
-    password = db.Column(db.String()
+    password = db.Column(db.String)
     name = db.Column(db.String)
     gender = db.Column(db.String)
     interested_in = db.Column(db.String)
