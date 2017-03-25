@@ -14,11 +14,11 @@ class UserModel(db.Model):
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
     image_url = db.Column(db.String)
-    #hangout1 = db.Column(db.String)
-    #hangout2 = db.Column(db.String)
-    #hangout3 = db.Column(db.String)
-    #hangout4 = db.Column(db.String)
-    #active = db.Column(db.Boolean)
+    hangout1 = db.Column(db.String)
+    hangout2 = db.Column(db.String)
+    hangout3 = db.Column(db.String)
+    hangout4 = db.Column(db.String)
+    active = db.Column(db.Boolean)
     #authentication_method = db.Column(db.String)
     #notification = db.Column(db.Boolean)
     #login = db.Column(db.Boolean)
@@ -39,7 +39,8 @@ class UserModel(db.Model):
     def __init__(self, username, password
     , name, gender, interested_in, latitude
     , longitude, image_url
-    #, hangout1, hangout2, hangout3, hangout4, active,
+    , hangout1, hangout2, hangout3, hangout4, active
+    #,
     #authentication_method, notification, login, hilook_visible, hangouts_visible,
     #max_distance, hide_ads, registration_ids, feet_or_meter, tips, email
     #,birthdate, city, country, token
@@ -52,11 +53,11 @@ class UserModel(db.Model):
         self.latitude = latitude
         self.longitude = longitude
         self.image_url = image_url
-        #self.hangout1 = hangout1
-        #self.hangout2 = hangout2
-        #self.hangout3 = hangout3
-        #self.hangout4 = hangout4
-        #self.active = active
+        self.hangout1 = hangout1
+        self.hangout2 = hangout2
+        self.hangout3 = hangout3
+        self.hangout4 = hangout4
+        self.active = active
         #self.authentication_method = authentication_method
         #self.notification = notification
         #self.login = login
@@ -83,9 +84,10 @@ class UserModel(db.Model):
         'gender': self.gender, 'interested_in': self.interested_in,
         'latitude': self.latitude, 'longitude': self.longitude,
         'image_url': self.image_url
-        #, 'hangout1': self.hangout1,
-        #'hangout2': self.hangout2, 'hangout3': self.hangout3,
-        #'hangout4': self.hangout4, 'active': self.active,
+        , 'hangout1': self.hangout1,
+        'hangout2': self.hangout2, 'hangout3': self.hangout3,
+        'hangout4': self.hangout4, 'active': self.active
+        #,
         #'authentication_method': self.authentication_method, 'notification': self.notification,
         #'login': self.login, 'hilook_visible': self.hilook_visible,
         #'hangouts_visible': self.hangouts_visible, 'max_distance': self.max_distance,
