@@ -79,6 +79,7 @@ class UserModel(db.Model):
         db.session.commit()
 
     def json(self):
+        b = self.birthdate.strftime('%Y-%m-%d %H:%M:%S.%f')
         return {'username': self.username, 'password': self.password
         , 'name':self.name,
         'gender': self.gender, 'interested_in': self.interested_in,
@@ -92,7 +93,8 @@ class UserModel(db.Model):
         'hide_ads': self.hide_ads, 'registration_ids': self.registration_ids,
         'feet_or_meter': self.feet_or_meter, 'tips': self.tips,
         'email': self.email
-        ,'birthdate': self.birthdate,
+        #,'birthdate': self.birthdate,
+        ,'birthdate': b,
         'city': self.city, 'country': self.country,
         'token': self.token
         }
