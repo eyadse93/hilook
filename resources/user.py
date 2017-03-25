@@ -41,7 +41,7 @@ class UserRegister(Resource):
         #required=True,
         help="This field cannot be blank."
     )
-
+    '''
     parser.add_argument('name', type=str, required=False)
     parser.add_argument('gender', type=str, required=False)
     parser.add_argument('interested_in', type=str, required=False)
@@ -68,7 +68,7 @@ class UserRegister(Resource):
     #parser.add_argument('city', type=str, required=False)
     #parser.add_argument('country', type=str, required=False)
     #parser.add_argument('token', type=str, required=False)
-
+'''
     def post(self):
         data = UserRegister.parser.parse_args()
         print(data['username'])
