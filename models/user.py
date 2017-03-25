@@ -11,8 +11,8 @@ class UserModel(db.Model):
     name = db.Column(db.String)
     gender = db.Column(db.String)
     interested_in = db.Column(db.String)
-    latitude = db.Column(db.Float)
-    longitude = db.Column(db.Float)
+    latitude = db.Column(db.BigInteger)
+    longitude = db.Column(db.BigInteger)
     image_url = db.Column(db.String)
     hangout1 = db.Column(db.String)
     hangout2 = db.Column(db.String)
@@ -24,13 +24,13 @@ class UserModel(db.Model):
     login = db.Column(db.Boolean)
     hilook_visible = db.Column(db.Boolean)
     hangouts_visible = db.Column(db.Boolean)
-    max_distance = db.Column(db.Float)
+    max_distance = db.Column(db.BigInteger)
     hide_ads = db.Column(db.Boolean)
     registration_ids = db.Column(db.String)
     feet_or_meter = db.Column(db.String)
     tips = db.Column(db.String)
     email = db.Column(db.String)
-    birthdate = db.Column(db.String)
+    birthdate = db.Column(db.BigInteger)
     city = db.Column(db.String)
     country = db.Column(db.String)
     token = db.Column(db.String)
@@ -79,7 +79,7 @@ class UserModel(db.Model):
         db.session.commit()
 
     def json(self):
-        b = self.birthdate.strftime('%Y-%m-%d %H:%M:%S.%f')
+        #b = self.birthdate.strftime('%Y-%m-%d %H:%M:%S.%f')
         return {'username': self.username, 'password': self.password
         , 'name':self.name,
         'gender': self.gender, 'interested_in': self.interested_in,
@@ -93,8 +93,8 @@ class UserModel(db.Model):
         'hide_ads': self.hide_ads, 'registration_ids': self.registration_ids,
         'feet_or_meter': self.feet_or_meter, 'tips': self.tips,
         'email': self.email
-        #,'birthdate': self.birthdate,
-        ,'birthdate': b,
+        ,'birthdate': self.birthdate,
+        #,'birthdate': b,
         'city': self.city, 'country': self.country,
         'token': self.token
         }
