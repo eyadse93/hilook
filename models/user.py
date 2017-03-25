@@ -38,7 +38,7 @@ class UserModel(db.Model):
     def __init__(self, username, password, name, gender, interested_in, latitude
     , longitude, image_url, hangout1, hangout2, hangout3, hangout4, active,
      authentication_method, notification, login, hilook_visible, hangouts_visible,
-     max_distance, hide_ads, registration_ids):
+     max_distance, hide_ads, registration_ids, feet_or_meter, tips, email):
         self.username = username
         self.password = password
         self.name = name
@@ -60,6 +60,9 @@ class UserModel(db.Model):
         self.max_distance = max_distance
         self.hide_ads = hide_ads
         self.registration_ids = registration_ids
+        self.feet_or_meter = feet_or_meter
+        self.tips = tips
+        self.email = email
 
     def save_to_db(self):
         db.session.add(self)
