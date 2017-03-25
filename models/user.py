@@ -8,12 +8,12 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     password = db.Column(db.String)
-    #name = db.Column(db.String)
-    #gender = db.Column(db.String)
-    #interested_in = db.Column(db.String)
-    #latitude = db.Column(db.Float)
-    #longitude = db.Column(db.Float)
-    #image_url = db.Column(db.String)
+    name = db.Column(db.String)
+    gender = db.Column(db.String)
+    interested_in = db.Column(db.String)
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
+    image_url = db.Column(db.String)
     #hangout1 = db.Column(db.String)
     #hangout2 = db.Column(db.String)
     #hangout3 = db.Column(db.String)
@@ -37,20 +37,21 @@ class UserModel(db.Model):
 
 
     def __init__(self, username, password
-    #, name, gender, interested_in, latitude
-    #, longitude, image_url, hangout1, hangout2, hangout3, hangout4, active,
+    , name, gender, interested_in, latitude
+    , longitude, image_url
+    #, hangout1, hangout2, hangout3, hangout4, active,
     #authentication_method, notification, login, hilook_visible, hangouts_visible,
     #max_distance, hide_ads, registration_ids, feet_or_meter, tips, email
     #,birthdate, city, country, token
     ):
         self.username = username
         self.password = password
-        #self.name = name
-        #self.gender = gender
-        #self.interested_in = interested_in
-        #self.latitude = latitude
-        #self.longitude = longitude
-        #self.image_url = image_url
+        self.name = name
+        self.gender = gender
+        self.interested_in = interested_in
+        self.latitude = latitude
+        self.longitude = longitude
+        self.image_url = image_url
         #self.hangout1 = hangout1
         #self.hangout2 = hangout2
         #self.hangout3 = hangout3
@@ -78,10 +79,11 @@ class UserModel(db.Model):
 
     def json(self):
         return {'username': self.username, 'password': self.password
-        #, 'name':self.name,
-        #'gender': self.gender, 'interested_in': self.interested_in,
-        #'latitude': self.latitude, 'longitude': self.longitude,
-        #'image_url': self.image_url, 'hangout1': self.hangout1,
+        , 'name':self.name,
+        'gender': self.gender, 'interested_in': self.interested_in,
+        'latitude': self.latitude, 'longitude': self.longitude,
+        'image_url': self.image_url
+        #, 'hangout1': self.hangout1,
         #'hangout2': self.hangout2, 'hangout3': self.hangout3,
         #'hangout4': self.hangout4, 'active': self.active,
         #'authentication_method': self.authentication_method, 'notification': self.notification,

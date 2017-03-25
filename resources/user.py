@@ -41,13 +41,14 @@ class UserRegister(Resource):
         required=True,
         help="This field cannot be blank."
     )
-    '''
+
     parser.add_argument('name', type=str, required=False)
     parser.add_argument('gender', type=str, required=False)
     parser.add_argument('interested_in', type=str, required=False)
     parser.add_argument('latitude', type=float, required=False)
     parser.add_argument('longitude', type=float, required=False)
     parser.add_argument('image_url', type=str, required=False)
+    '''
     parser.add_argument('hangout1', type=str, required=False)
     parser.add_argument('hangout2', type=str, required=False)
     parser.add_argument('hangout3', type=str, required=False)
