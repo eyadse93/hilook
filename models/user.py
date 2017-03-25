@@ -23,7 +23,7 @@ class UserModel(db.Model):
     login = db.Column(db.Boolean)
     hilook_visible = db.Column(db.Boolean)
     hangouts_visible = db.Column(db.Boolean)
-    max_distance = db.Column(db.Integer)
+    max_distance = db.Column(db.Float)
     hide_ads = db.Column(db.Boolean)
     registration_ids = db.Column(db.String)
     feet_or_meter = db.Column(db.Boolean)
@@ -36,7 +36,9 @@ class UserModel(db.Model):
 
 
     def __init__(self, username, password, name, gender, interested_in, latitude
-    , longitude, image_url, hangout1, hangout2, hangout3, hangout4, active):
+    , longitude, image_url, hangout1, hangout2, hangout3, hangout4, active,
+     authentication_method, notification, login, hilook_visible, hangouts_visible,
+     max_distance, hide_ads, registration_ids):
         self.username = username
         self.password = password
         self.name = name
@@ -50,6 +52,14 @@ class UserModel(db.Model):
         self.hangout3 = hangout3
         self.hangout4 = hangout4
         self.active = active
+        self.authentication_method = authentication_method
+        self.notification = notification
+        self.login = login
+        self.hilook_visible = hilook_visible
+        self.hangouts_visible = hangouts_visible
+        self.max_distance = max_distance
+        self.hide_ads = hide_ads
+        self.registration_ids = registration_ids
 
     def save_to_db(self):
         db.session.add(self)
