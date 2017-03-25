@@ -36,7 +36,7 @@ class UserModel(db.Model):
 
 
     def __init__(self, username, password, name, gender, interested_in, latitude
-    , longitude, image_url, hangout1, hangout2, hangout3, hangout4):
+    , longitude, image_url, hangout1, hangout2, hangout3, hangout4, active):
         self.username = username
         self.password = password
         self.name = name
@@ -49,6 +49,7 @@ class UserModel(db.Model):
         this.hangout2 = hangout2
         this.hangout3 = hangout3
         this.hangout4 = hangout4
+        this.active = active
 
     def save_to_db(self):
         db.session.add(self)
