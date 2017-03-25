@@ -45,11 +45,11 @@ class UserModel(db.Model):
         self.latitude = latitude
         self.longitude = longitude
         self.image_url = image_url
-        this.hangout1 = hangout1
-        this.hangout2 = hangout2
-        this.hangout3 = hangout3
-        this.hangout4 = hangout4
-        this.active = active
+        self.hangout1 = hangout1
+        self.hangout2 = hangout2
+        self.hangout3 = hangout3
+        self.hangout4 = hangout4
+        self.active = active
 
     def save_to_db(self):
         db.session.add(self)
