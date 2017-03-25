@@ -87,8 +87,8 @@ class UserModel(db.Model):
         'hangouts_visible': self.hangouts_visible, 'max_distance': self.max_distance,
         'hide_ads': self.hide_ads, 'registration_ids': self.registration_ids,
         'feet_or_meter': self.feet_or_meter, 'tips': self.tips,
-        'email': self.email,
-        #'birthdate': self.birthdate,
+        'email': self.email
+        #,'birthdate': self.birthdate,
         #'city': self.city, 'country': self.country,
         #'token': self.token
         }
