@@ -30,7 +30,7 @@ class UserModel(db.Model):
     feet_or_meter = db.Column(db.Boolean)
     tips = db.Column(db.String)
     email = db.Column(db.String)
-    birthdate = db.Column(String)
+    birthdate = db.Column(db.String)
     city = db.Column(db.String)
     country = db.Column(db.String)
     token = db.Column(db.String)
