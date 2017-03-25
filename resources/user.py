@@ -44,7 +44,7 @@ class UserRegister(Resource):
     parser.add_argument('name', type=str, required=False)
     parser.add_argument('gender', type=str, required=False)
     parser.add_argument('interested_in', type=str, required=False)
-    #parser.add_argument('latitude', type=str, required=False)
+    parser.add_argument('latitude', type=float, required=False)
     #parser.add_argument('longitude', type=str, required=False)
     #parser.add_argument('image_url', type=str, required=False)
     #parser.add_argument('hangout1', type=str, required=False)
