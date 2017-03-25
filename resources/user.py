@@ -33,12 +33,12 @@ class UserRegister(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('username',
         type=str,
-        #required=True,
+        required=True,
         help="This field cannot be blank."
     )
     parser.add_argument('password',
         type=str,
-        #required=True,
+        required=True,
         help="This field cannot be blank."
     )
     '''
