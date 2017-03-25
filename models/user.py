@@ -67,7 +67,8 @@ class UserModel(db.Model):
         self.feet_or_meter = feet_or_meter
         self.tips = tips
         self.email = email
-        self.birthdate = datetime.strptime(birthdate)
+        self.birthdate = datetime.strptime(birthdate, '%Y-%m-%d %H:%M:%S.%f')
+        #1978-03-25 01:54:34.143
         #self.birthdate = birthdate
         self.city = city
         self.country = country
