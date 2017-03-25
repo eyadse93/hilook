@@ -58,7 +58,7 @@ class UserRegister(Resource):
     parser.add_argument('hilook_visible', type=bool, required=False)
     parser.add_argument('hangouts_visible', type=bool, required=False)
     parser.add_argument('max_distance', type=float, required=False)
-    parser.add_argument('hide_ads', type=bool, required=False)
+    parser.add_argument('hide_ads', type=str, required=False)
     parser.add_argument('registration_ids', type=str, required=False)
     parser.add_argument('feet_or_meter', type=str, required=False)
     parser.add_argument('tips', type=str, required=False)
