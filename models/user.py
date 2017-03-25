@@ -27,7 +27,7 @@ class UserModel(db.Model):
     max_distance = db.Column(db.Float)
     hide_ads = db.Column(db.Boolean)
     registration_ids = db.Column(db.String)
-    feet_or_meter = db.Column(db.Boolean)
+    feet_or_meter = db.Column(db.String)
     tips = db.Column(db.String)
     email = db.Column(db.String)
     birthdate = db.Column(db.String)
@@ -81,8 +81,7 @@ class UserModel(db.Model):
         , 'name':self.name,
         'gender': self.gender, 'interested_in': self.interested_in,
         'latitude': self.latitude, 'longitude': self.longitude,
-        'image_url': self.image_url
-        , 'hangout1': self.hangout1,
+        'image_url': self.image_url, 'hangout1': self.hangout1,
         'hangout2': self.hangout2, 'hangout3': self.hangout3,
         'hangout4': self.hangout4, 'active': self.active,
         'authentication_method': self.authentication_method, 'notification': self.notification,
