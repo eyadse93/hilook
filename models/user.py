@@ -35,13 +35,20 @@ class UserModel(db.Model):
     token = db.Column(db.String)
 
 
-    def __init__(self, username, password, name, gender, interested_in, latitude):
+    def __init__(self, username, password, name, gender, interested_in, latitude
+    , longitude, image_url, hangout1, hangout2, hangout3, hangout4):
         self.username = username
         self.password = password
         self.name = name
         self.gender = gender
         self.interested_in = interested_in
         self.latitude = latitude
+        self.longitude = longitude
+        self.image_url = image_url
+        this.hangout1 = hangout1
+        this.hangout2 = hangout2
+        this.hangout3 = hangout3
+        this.hangout4 = hangout4
 
     def save_to_db(self):
         db.session.add(self)
