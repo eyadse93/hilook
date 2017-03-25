@@ -35,7 +35,7 @@ class UserModel(db.Model):
     token = db.Column(db.String)
 
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, name):
         self.username = username
         self.password = password
 
