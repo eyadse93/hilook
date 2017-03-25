@@ -30,17 +30,18 @@ class UserModel(db.Model):
     feet_or_meter = db.Column(db.Boolean)
     tips = db.Column(db.String)
     email = db.Column(db.String)
-    birthdate = db.Column(db.String)
-    city = db.Column(db.String)
-    country = db.Column(db.String)
-    token = db.Column(db.String)
+    #birthdate = db.Column(db.String)
+    #city = db.Column(db.String)
+    #country = db.Column(db.String)
+    #token = db.Column(db.String)
 
 
     def __init__(self, username, password, name, gender, interested_in, latitude
     , longitude, image_url, hangout1, hangout2, hangout3, hangout4, active,
      authentication_method, notification, login, hilook_visible, hangouts_visible,
-     max_distance, hide_ads, registration_ids, feet_or_meter, tips, email,
-     birthdate, city, country, token):
+     max_distance, hide_ads, registration_ids, feet_or_meter, tips, email
+     #,birthdate, city, country, token
+     ):
         self.username = username
         self.password = password
         self.name = name
@@ -65,10 +66,10 @@ class UserModel(db.Model):
         self.feet_or_meter = feet_or_meter
         self.tips = tips
         self.email = email
-        self.birthdate = birthdate
-        self.city = city
-        self.country = country
-        self.token = token
+        #self.birthdate = birthdate
+        #self.city = city
+        #self.country = country
+        #self.token = token
 
     def save_to_db(self):
         db.session.add(self)
@@ -86,9 +87,10 @@ class UserModel(db.Model):
         'hangouts_visible': self.hangouts_visible, 'max_distance': self.max_distance,
         'hide_ads': self.hide_ads, 'registration_ids': self.registration_ids,
         'feet_or_meter': self.feet_or_meter, 'tips': self.tips,
-        'email': self.email, 'birthdate': self.birthdate,
-        'city': self.city, 'country': self.country,
-        'token': self.token}
+        'email': self.email,
+        #'birthdate': self.birthdate,
+        #'city': self.city, 'country': self.country,
+        #'token': self.token}
 
     def checkPassword(self, password):
         if self.password == password:
