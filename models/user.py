@@ -30,7 +30,7 @@ class UserModel(db.Model):
     feet_or_meter = db.Column(db.String)
     tips = db.Column(db.String)
     email = db.Column(db.String)
-    birthdate = db.Column(db.String)
+    birthdate = db.Column(db.DateTime)
     city = db.Column(db.String)
     country = db.Column(db.String)
     token = db.Column(db.String)
@@ -67,7 +67,8 @@ class UserModel(db.Model):
         self.feet_or_meter = feet_or_meter
         self.tips = tips
         self.email = email
-        self.birthdate = birthdate
+        self.birthdate = datetime.strptime(birthdate)
+        #self.birthdate = birthdate
         self.city = city
         self.country = country
         self.token = token
