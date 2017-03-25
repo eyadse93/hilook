@@ -1,6 +1,7 @@
 import sqlite3
 from flask_restful import Resource, reqparse
 from models.user import UserModel
+from datetime import datetime
 
 class UserLogin(Resource):
 
@@ -63,10 +64,10 @@ class UserRegister(Resource):
     parser.add_argument('feet_or_meter', type=str, required=False)
     parser.add_argument('tips', type=str, required=False)
     parser.add_argument('email', type=str, required=False)
-    #parser.add_argument('birthdate', type=str, required=False)
-    #parser.add_argument('city', type=str, required=False)
-    #parser.add_argument('country', type=str, required=False)
-    #parser.add_argument('token', type=str, required=False)
+    parser.add_argument('birthdate', type=datetime, required=False)
+    parser.add_argument('city', type=str, required=False)
+    parser.add_argument('country', type=str, required=False)
+    parser.add_argument('token', type=str, required=False)
 
     def post(self):
         data = UserRegister.parser.parse_args()

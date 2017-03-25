@@ -1,5 +1,6 @@
 import sqlite3
 from db import db
+from datetime import datetime
 
 class UserModel(db.Model):
     __tablename__ = 'users'
@@ -29,7 +30,7 @@ class UserModel(db.Model):
     feet_or_meter = db.Column(db.Boolean)
     tips = db.Column(db.String)
     email = db.Column(db.String)
-    birthdate = db.Column(db.String)
+    birthdate = db.Column(datetime)
     city = db.Column(db.String)
     country = db.Column(db.String)
     token = db.Column(db.String)
@@ -38,7 +39,8 @@ class UserModel(db.Model):
     def __init__(self, username, password, name, gender, interested_in, latitude
     , longitude, image_url, hangout1, hangout2, hangout3, hangout4, active,
      authentication_method, notification, login, hilook_visible, hangouts_visible,
-     max_distance, hide_ads, registration_ids, feet_or_meter, tips, email):
+     max_distance, hide_ads, registration_ids, feet_or_meter, tips, email,
+     birthdate, city, country, token):
         self.username = username
         self.password = password
         self.name = name
@@ -63,6 +65,10 @@ class UserModel(db.Model):
         self.feet_or_meter = feet_or_meter
         self.tips = tips
         self.email = email
+        self.birthdate = birthdate
+        self.city = city
+        self.country = country
+        self.token = token
 
     def save_to_db(self):
         db.session.add(self)
