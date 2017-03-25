@@ -90,7 +90,8 @@ class UserModel(db.Model):
         'email': self.email,
         #'birthdate': self.birthdate,
         #'city': self.city, 'country': self.country,
-        #'token': self.token}
+        #'token': self.token
+        }
 
     def checkPassword(self, password):
         if self.password == password:
