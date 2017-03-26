@@ -86,12 +86,6 @@ class GetUserData(Resource):
         required=True,
         help="This field cannot be blank."
     )
-    def get(self, username):
-        user = UserModel.find_by_username(username)
-        if user:
-            return user.json(), 200
-        else:
-            return {"message": "user not found"}, 400
 
     def post(self):
         data = GetUserData.parser.parse_args()
