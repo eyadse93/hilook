@@ -80,9 +80,15 @@ class UserRegister(Resource):
 
 
 class GetUserData(Resource):
-
-    def get(self, username):
-        user = UserModel.find_by_username(username)
+    parser = reqparse.RequestParser()
+    parser.add_argument('username',
+        type=str,
+        required=True,
+        help="This field cannot be blank."
+    )
+    def post(self):
+        data = UserLogin.parser.parse_args()
+        user = UserModel.find_by_username(data['username'])
         if user:
             return user.json(), 200
         else:
