@@ -79,8 +79,7 @@ class UserModel(db.Model):
         db.session.commit()
 
     def json(self):
-        #b = self.birthdate.strftime('%Y-%m-%d %H:%M:%S.%f')
-        return {'username': self.username, 'password': self.password
+        return {'username': self.username, 'password': ""
         , 'name':self.name,
         'gender': self.gender, 'interested_in': self.interested_in,
         'latitude': self.latitude, 'longitude': self.longitude,
@@ -94,7 +93,6 @@ class UserModel(db.Model):
         'feet_or_meter': self.feet_or_meter, 'tips': self.tips,
         'email': self.email
         ,'birthdate': self.birthdate,
-        #,'birthdate': b,
         'city': self.city, 'country': self.country,
         'token': self.token
         }
