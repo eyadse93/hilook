@@ -27,8 +27,7 @@ api.add_resource(StoreList, '/stores')
 api.add_resource(AppVersion, '/version')
 api.add_resource(UserLogin, '/login')
 api.add_resource(UserRegister, '/register')
-api.add_resource(UserRegister, '/getuserdata')
-
+api.add_resource(GetUserData, '/getuserdata')
 
 if __name__ == '__main__':
     from db import db
