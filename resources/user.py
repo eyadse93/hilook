@@ -134,52 +134,53 @@ class SetUserData(Resource):
         user = UserModel.find_by_username(data['username'])
         if user:
             for key, value in data.items():
-                if (key == 'interested_in'):
-                    user.interested_in = value
-                elif (key == 'latitude'):
-                    user.latitude = value
-                elif (key == 'longitude'):
-                    user.longitude = value
-                elif (key == 'image_url'):
-                    user.image_url = value
-                elif (key == 'hangout1'):
-                    user.hangout1 = value
-                elif (key == 'hangout2'):
-                    user.hangout2 = value
-                elif (key == 'hangout3'):
-                    user.hangout3 = value
-                elif (key == 'hangout4'):
-                    user.hangout4 = value
-                elif (key == 'active'):
-                    user.active = value
-                elif (key == 'authentication_method'):
-                    user.authentication_method = value
-                elif (key == 'notification'):
-                    user.notification = value
-                elif (key == 'login'):
-                    user.login = value
-                elif (key == 'hilook_visible'):
-                    user.hilook_visible = value
-                elif (key == 'hangouts_visible'):
-                    user.hangouts_visible = value
-                elif (key == 'max_distance'):
-                    user.max_distance = value
-                elif (key == 'hide_ads'):
-                    user.hide_ads = value
-                elif (key == 'registration_ids'):
-                    user.registration_ids = value
-                elif (key == 'feet_or_meter'):
-                    user.feet_or_meter = value
-                elif (key == 'tips'):
-                    user.tips = value
-                elif (key == 'email'):
-                    user.email = value
-                elif (key == 'city'):
-                    user.city = value
-                elif (key == 'country'):
-                    user.country = value
-                elif (key == 'token'):
-                    user.token = value
+                if (value):
+                    if (key == 'interested_in'):
+                        user.interested_in = value
+                    elif (key == 'latitude'):
+                        user.latitude = value
+                    elif (key == 'longitude'):
+                        user.longitude = value
+                    elif (key == 'image_url'):
+                        user.image_url = value
+                    elif (key == 'hangout1'):
+                        user.hangout1 = value
+                    elif (key == 'hangout2'):
+                        user.hangout2 = value
+                    elif (key == 'hangout3'):
+                        user.hangout3 = value
+                    elif (key == 'hangout4'):
+                        user.hangout4 = value
+                    elif (key == 'active'):
+                        user.active = value
+                    elif (key == 'authentication_method'):
+                        user.authentication_method = value
+                    elif (key == 'notification'):
+                        user.notification = value
+                    elif (key == 'login'):
+                        user.login = value
+                    elif (key == 'hilook_visible'):
+                        user.hilook_visible = value
+                    elif (key == 'hangouts_visible'):
+                        user.hangouts_visible = value
+                    elif (key == 'max_distance'):
+                        user.max_distance = value
+                    elif (key == 'hide_ads'):
+                        user.hide_ads = value
+                    elif (key == 'registration_ids'):
+                        user.registration_ids = value
+                    elif (key == 'feet_or_meter'):
+                        user.feet_or_meter = value
+                    elif (key == 'tips'):
+                        user.tips = value
+                    elif (key == 'email'):
+                        user.email = value
+                    elif (key == 'city'):
+                        user.city = value
+                    elif (key == 'country'):
+                        user.country = value
+                    elif (key == 'token'):
+                        user.token = value
 
             user.save_to_db()
             return user.json(), 200
