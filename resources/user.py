@@ -133,7 +133,7 @@ class SetUserData(Resource):
         data = SetUserData.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
-            for key, value in d.items():
+            for key, value in data.items():
                 if (key == 'interested_in'):
                     user.interested_in = value
             return user.json(), 200
