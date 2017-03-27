@@ -136,6 +136,7 @@ class SetUserData(Resource):
             for key, value in data.items():
                 if (key == 'interested_in'):
                     user.interested_in = value
+            user.save_to_db()        
             return user.json(), 200
         else:
             return {"message": "user not found"}, 400
