@@ -32,16 +32,10 @@ api.add_resource(UserRegister, '/register')
 api.add_resource(GetUserData, '/getuserdata')
 api.add_resource(SetUserData, '/setuserdata')
 
-def f():
-    # do something here ...
-    # call f() again in 60 seconds
-    print("eeezzz1234321")
-    threading.Timer(60, f).start()
 
 if __name__ == '__main__':
     from db import db
     db.init_app(app)
     app.run(port=5000, debug=True)
 
-    # start calling f now and every 60 sec thereafter
-    f()
+    
