@@ -28,6 +28,7 @@ api.add_resource(AppVersion, '/version')
 api.add_resource(UserLogin, '/login')
 api.add_resource(UserRegister, '/register')
 api.add_resource(GetUserData, '/getuserdata')
+api.add_resource(SetUserData, '/setuserdata')
 
 if __name__ == '__main__':
     from db import db

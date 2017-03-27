@@ -96,6 +96,7 @@ class GetUserData(Resource):
             return {"message": "user not found"}, 400
 
 class setUserData(Resource):
+    parser = reqparse.RequestParser()
     parser.add_argument('username',
         type=str,
         required=True,
