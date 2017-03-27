@@ -136,7 +136,52 @@ class SetUserData(Resource):
             for key, value in data.items():
                 if (key == 'interested_in'):
                     user.interested_in = value
-            user.save_to_db()        
+                else if (key == 'latitude'):
+                    user.latitude = value
+                else if (key == 'longitude'):
+                    user.longitude = value
+                else if (key == 'image_url'):
+                    user.image_url = value
+                else if (key == 'hangout1'):
+                    user.hangout1 = value
+                else if (key == 'hangout2'):
+                    user.hangout2 = value
+                else if (key == 'hangout3'):
+                    user.hangout3 = value
+                else if (key == 'hangout4'):
+                    user.hangout4 = value
+                else if (key == 'active'):
+                    user.active = value
+                else if (key == 'authentication_method'):
+                    user.authentication_method = value
+                else if (key == 'notification'):
+                    user.notification = value
+                else if (key == 'login'):
+                    user.login = value
+                else if (key == 'hilook_visible'):
+                    user.hilook_visible = value
+                else if (key == 'hangouts_visible'):
+                    user.hangouts_visible = value
+                else if (key == 'max_distance'):
+                    user.max_distance = value
+                else if (key == 'hide_ads'):
+                    user.hide_ads = value
+                else if (key == 'registration_ids'):
+                    user.registration_ids = value
+                else if (key == 'feet_or_meter'):
+                    user.feet_or_meter = value
+                else if (key == 'tips'):
+                    user.tips = value
+                else if (key == 'email'):
+                    user.email = value
+                else if (key == 'city'):
+                    user.city = value
+                else if (key == 'country'):
+                    user.country = value
+                else if (key == 'token'):
+                    user.token = value
+                    
+            user.save_to_db()
             return user.json(), 200
         else:
             return {"message": "user not found"}, 400
