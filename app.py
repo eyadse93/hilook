@@ -11,6 +11,8 @@ from resources.store import Store, StoreList
 
 from resources.version import AppVersion
 
+import threading
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -30,7 +32,16 @@ api.add_resource(UserRegister, '/register')
 api.add_resource(GetUserData, '/getuserdata')
 api.add_resource(SetUserData, '/setuserdata')
 
+def f():
+    # do something here ...
+    # call f() again in 60 seconds
+    print("done")
+    threading.Timer(60, f).start()
+
 if __name__ == '__main__':
     from db import db
     db.init_app(app)
     app.run(port=5000, debug=True)
+
+    # start calling f now and every 60 sec thereafter
+    f()
