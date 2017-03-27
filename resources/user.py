@@ -94,3 +94,47 @@ class GetUserData(Resource):
             return user.json(), 200
         else:
             return {"message": "user not found"}, 400
+
+class setUserData(Resource):
+    parser.add_argument('username',
+        type=str,
+        required=True,
+        help="This field cannot be blank."
+    )
+    parser.add_argument('name', type=str, required=False)
+    parser.add_argument('gender', type=str, required=False)
+    parser.add_argument('interested_in', type=str, required=False)
+    parser.add_argument('latitude', type=float, required=False)
+    parser.add_argument('longitude', type=float, required=False)
+    parser.add_argument('image_url', type=str, required=False)
+    parser.add_argument('hangout1', type=str, required=False)
+    parser.add_argument('hangout2', type=str, required=False)
+    parser.add_argument('hangout3', type=str, required=False)
+    parser.add_argument('hangout4', type=str, required=False)
+    parser.add_argument('active', type=bool, required=False)
+    parser.add_argument('authentication_method', type=str, required=False)
+    parser.add_argument('notification', type=bool, required=False)
+    parser.add_argument('login', type=bool, required=False)
+    parser.add_argument('hilook_visible', type=bool, required=False)
+    parser.add_argument('hangouts_visible', type=bool, required=False)
+    parser.add_argument('max_distance', type=float, required=False)
+    parser.add_argument('hide_ads', type=bool, required=False)
+    parser.add_argument('registration_ids', type=str, required=False)
+    parser.add_argument('feet_or_meter', type=str, required=False)
+    parser.add_argument('tips', type=str, required=False)
+    parser.add_argument('email', type=str, required=False)
+    parser.add_argument('birthdate', type=float, required=False)
+    parser.add_argument('city', type=str, required=False)
+    parser.add_argument('country', type=str, required=False)
+    parser.add_argument('token', type=str, required=False)
+
+    def post(self):
+        data = SetUserData.parser.parse_args()
+        user = UserModel.find_by_username(data['username'])
+        if user:
+            for key, value in d.items():
+                if (key == 'interested_in'):
+                    user.interested_in = value
+            return user.json(), 200
+        else:
+            return {"message": "user not found"}, 400
