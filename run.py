@@ -1,6 +1,9 @@
 from app import app
 from db import db
 
+import threading
+
+
 db.init_app(app)
 # start calling f now and every 60 sec thereafter
 f()
