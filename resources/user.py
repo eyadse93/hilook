@@ -136,51 +136,51 @@ class SetUserData(Resource):
             for key, value in data.items():
                 if (key == 'interested_in'):
                     user.interested_in = value
-                else if (key == 'latitude'):
+                elif (key == 'latitude'):
                     user.latitude = value
-                else if (key == 'longitude'):
+                elif (key == 'longitude'):
                     user.longitude = value
-                else if (key == 'image_url'):
+                elif (key == 'image_url'):
                     user.image_url = value
-                else if (key == 'hangout1'):
+                elif (key == 'hangout1'):
                     user.hangout1 = value
-                else if (key == 'hangout2'):
+                elif (key == 'hangout2'):
                     user.hangout2 = value
-                else if (key == 'hangout3'):
+                elif (key == 'hangout3'):
                     user.hangout3 = value
-                else if (key == 'hangout4'):
+                elif (key == 'hangout4'):
                     user.hangout4 = value
-                else if (key == 'active'):
+                elif (key == 'active'):
                     user.active = value
-                else if (key == 'authentication_method'):
+                elif (key == 'authentication_method'):
                     user.authentication_method = value
-                else if (key == 'notification'):
+                elif (key == 'notification'):
                     user.notification = value
-                else if (key == 'login'):
+                elif (key == 'login'):
                     user.login = value
-                else if (key == 'hilook_visible'):
+                elif (key == 'hilook_visible'):
                     user.hilook_visible = value
-                else if (key == 'hangouts_visible'):
+                elif (key == 'hangouts_visible'):
                     user.hangouts_visible = value
-                else if (key == 'max_distance'):
+                elif (key == 'max_distance'):
                     user.max_distance = value
-                else if (key == 'hide_ads'):
+                elif (key == 'hide_ads'):
                     user.hide_ads = value
-                else if (key == 'registration_ids'):
+                elif (key == 'registration_ids'):
                     user.registration_ids = value
-                else if (key == 'feet_or_meter'):
+                elif (key == 'feet_or_meter'):
                     user.feet_or_meter = value
-                else if (key == 'tips'):
+                elif (key == 'tips'):
                     user.tips = value
-                else if (key == 'email'):
+                elif (key == 'email'):
                     user.email = value
-                else if (key == 'city'):
+                elif (key == 'city'):
                     user.city = value
-                else if (key == 'country'):
+                elif (key == 'country'):
                     user.country = value
-                else if (key == 'token'):
+                elif (key == 'token'):
                     user.token = value
-                    
+
             user.save_to_db()
             return user.json(), 200
         else:
