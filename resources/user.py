@@ -81,6 +81,7 @@ class UserRegister(Resource):
 
 class GetUserData(Resource):
     parser = reqparse.RequestParser()
+    parser = parser.replace("\\", "")
     parser.add_argument('username',
         type=str,
         required=True,
@@ -89,9 +90,9 @@ class GetUserData(Resource):
 
     def post(self):
         #data = data.replace("\\", "")
-        d = GetUserData.parser
-        d = d.replace("\\", "")
-        data = d.parse_args()
+        #d = GetUserData.parser
+        #d = d.replace("\\", "")
+        data = GetUserData.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
             return user.json(), 200
