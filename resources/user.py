@@ -88,8 +88,10 @@ class GetUserData(Resource):
     )
 
     def post(self):
-        data = data.replace("\\", "")
-        data = GetUserData.parser.parse_args()
+        #data = data.replace("\\", "")
+        d = GetUserData.parser
+        d = d.replace("\\", "")
+        data = d.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
             return user.json(), 200
