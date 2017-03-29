@@ -81,7 +81,7 @@ class UserRegister(Resource):
 
 class GetUserData(Resource):
     parser = reqparse.RequestParser()
-    parser = parser.replace("\\", "")
+    #parser = parser.replace("\\", "")
     parser.add_argument('username',
         type=str,
         required=True,
