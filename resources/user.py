@@ -89,6 +89,7 @@ class GetUserData(Resource):
     )
 
     def post(self):
+
         #data = data.replace("\\", "")
         #d = GetUserData.parser
         #d = d.replace("\\", "")
@@ -187,6 +188,6 @@ class SetUserData(Resource):
                         user.token = value
 
             user.save_to_db()
-            return user.json(), 200
+            return "updated successfully", 200
         else:
             return {"message": "user not found"}, 400
