@@ -216,7 +216,10 @@ class UserDelete(Resource):
         data = UserLogin.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
-            user.delete_from_db()
-            return {"message": "user deleted"}, 200
+            if user.checkPassword(data['password']):
+                user.delete_from_db()
+                return {"message": "user deleted"}, 200
+            else:
+            return {"message": "wrong password"}, 400
         else:
             return {"message": "user not found"}, 400
