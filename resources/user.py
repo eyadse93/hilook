@@ -139,7 +139,7 @@ class SetUserData(Resource):
         user = UserModel.find_by_username(data['username'])
         if user:
             for key, value in data.items():
-                if (value):
+                if (value is not None):
                     if (key == 'interested_in'):
                         user.interested_in = value
                     elif (key == 'latitude'):
