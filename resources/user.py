@@ -197,3 +197,26 @@ class SetUserData(Resource):
             return "updated successfully", 200
         else:
             return {"message": "user not found"}, 400
+
+class UserDelete(Resource):
+
+    parser = reqparse.RequestParser()
+    parser.add_argument('username',
+        type=str,
+        required=True,
+        help="This field cannot be blank."
+    )
+    parser.add_argument('password',
+        type=str,
+        required=True,
+        help="This field cannot be blank."
+    )
+
+    def post(self):
+        data = UserLogin.parser.parse_args()
+        user = UserModel.find_by_username(data['username'])
+        if user:
+            user.delete_from_db()
+            return {"message": "user deleted"}, 200
+        else:
+            return {"message": "user not found"}, 400
