@@ -190,8 +190,8 @@ class SetUserData(Resource):
 
             user.save_to_db()
 
-            user = UserModel.find_by_username(data['username'])
-            print(user.notification)
+            #user = UserModel.find_by_username(data['username'])
+            #print(user.notification)
 
             return "updated successfully", 200
         else:
