@@ -162,6 +162,7 @@ class SetUserData(Resource):
                         user.authentication_method = value
                     elif (key == 'notification'):
                         user.notification = value
+                        print(user.notification)
                     elif (key == 'login'):
                         user.login = value
                     elif (key == 'hilook_visible'):
@@ -188,6 +189,10 @@ class SetUserData(Resource):
                         user.token = value
 
             user.save_to_db()
+
+            user = UserModel.find_by_username(data['username'])
+            print(user.notification)
+
             return "updated successfully", 200
         else:
             return {"message": "user not found"}, 400
