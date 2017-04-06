@@ -81,7 +81,7 @@ class UserModel(db.Model):
         db.session.commit()
 
     def json(self):
-        return {'username': self.username, 'password': ""
+        return {'username': self.username, 'password': self.password
         , 'name':self.name,
         'gender': self.gender, 'interested_in': self.interested_in,
         'latitude': self.latitude, 'longitude': self.longitude,
