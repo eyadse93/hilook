@@ -162,6 +162,7 @@ class SetUserData(Resource):
                     user.authentication_method = value
                 elif (key == 'notification'):
                     user.notification = value
+                    print(value)
                     print(user.notification)
                 elif (key == 'login'):
                     user.login = value
