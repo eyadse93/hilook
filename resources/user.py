@@ -220,6 +220,6 @@ class UserDelete(Resource):
                 user.delete_from_db()
                 return {"message": "user deleted"}, 200
             else:
-            return {"message": "wrong password"}, 400
+                return {"message": "wrong password"}, 400
         else:
             return {"message": "user not found"}, 400
