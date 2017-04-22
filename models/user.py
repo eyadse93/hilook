@@ -119,4 +119,4 @@ class UserModel(db.Model):
         #result = db.engine.execute('SELECT username from users WHERE hangout1 = ' + hangout1 +
         #' OR hangout2 = ' + hangout2)
 
-        return cls.query.filter_by(or_(hangout1=hangout1, hangout2=hangout2, hangout3=hangout3, hangout4=hangout4), country=country)
+        return cls.query.filter_by(or_(hangout1=hangout1, hangout2=hangout2, hangout3=hangout3, hangout4=hangout4), country=country).limit(20).all()
