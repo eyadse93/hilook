@@ -1,6 +1,8 @@
 import sqlite3
 from db import db
 from datetime import datetime
+from sqlalchemy import or_
+from sqlalchemy import and_
 
 class UserModel(db.Model):
     __tablename__ = 'users'
@@ -111,3 +113,11 @@ class UserModel(db.Model):
     @classmethod
     def find_by_id(cls, _id):
         return cls.query.filter_by(id=_id).first()
+
+    @classmethod
+    def find_hangouts(cls, username, hangout1, hangout2, hangout3, hangout4, country):
+        #result = db.engine.execute('SELECT username from users WHERE hangout1 = ' + hangout1 +
+        #' OR hangout2 = ' + hangout2)
+
+        return cls.query.filter_by(or_(hangout1=hangout1, hangout2=hangout2,
+        hangout3=hangout3,hangout4=hangout4)and_(country=country))
