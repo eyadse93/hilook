@@ -8,6 +8,8 @@ from security import authenticate, identity
 from resources.user import UserRegister, UserLogin, GetUserData, SetUserData, UserDelete
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
+from resources.hangouts import GetHangouts
+
 
 from resources.version import AppVersion
 
@@ -32,6 +34,7 @@ api.add_resource(UserRegister, '/register')
 api.add_resource(GetUserData, '/getuserdata')
 api.add_resource(SetUserData, '/setuserdata')
 api.add_resource(UserDelete, '/deleteuser')
+api.add_resource(GetHangouts, '/gethangouts')
 
 if __name__ == '__main__':
     from db import db
