@@ -116,7 +116,8 @@ class UserModel(db.Model):
 
     @classmethod
     def find_hangouts(cls, username, hangout1, hangout2, hangout3, hangout4, country):
-        #result = db.engine.execute('SELECT username from users WHERE hangout1 = ' + hangout1 +
-        #' OR hangout2 = ' + hangout2)
+        result = db.engine.execute('SELECT username from users WHERE hangout1 = ' + hangout1 +
+        ' OR hangout2 = ' + hangout2)
+        print(result)
 
-        return cls.query.filter_by(or_(hangout1=hangout1, hangout2=hangout2, hangout3=hangout3, hangout4=hangout4), country=country).limit(20).all()
+        #return cls.query.filter_by(or_(hangout1=hangout1, hangout2=hangout2, hangout3=hangout3, hangout4=hangout4), country=country).limit(20).all()
