@@ -13,5 +13,7 @@ class GetHangouts(Resource):
         data = GetHangouts.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
-            result = UserModel.find_hangouts(user.username, user.hangout1, user.hangout2, user.hangout3, user.hangout4, user.country)
-            print (result)
+            query = "SELECT username from users WHERE hangout1 = " + user.hangout1 +
+            " OR hangout2 = " + user.hangout2 + ";"
+            result = UserModel.find_hangouts(query)
+            #print (result)
