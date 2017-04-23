@@ -116,7 +116,7 @@ class UserModel(db.Model):
 
     @classmethod
     def find_hangouts(cls, username, h1, h2, h3, h4, c):
-        var h = "hangout"
+        h = "hangout1" + ""
         result = db.engine.execute("SELECT username from users WHERE h = " + h1 +
         " OR h = " + h2 + ";")
         print(result)
