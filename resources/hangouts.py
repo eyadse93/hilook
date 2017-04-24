@@ -17,6 +17,6 @@ class GetHangouts(Resource):
             results = UserModel.find_hangouts(user)
             for result in results:
                 #jsonResult = jsonResult + result.json()
-                jsonResult.append(result)
+                jsonResult.append(result.json())
             return jsonResult
             #print (result)
