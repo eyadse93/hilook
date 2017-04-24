@@ -116,8 +116,14 @@ class UserModel(db.Model):
 
     @classmethod
     def find_hangouts(cls, user):
-        #result = db.engine.execute(query)
-        #print(result)
-        #return result
-        #return cls.query.filter_by(hangout1=user.hangout1).limit(20).all()
-        return cls.query.filter(or_(UserModel.hangout1==user.hangout1, UserModel.hangout2==user.hangout2)).limit(20).all()
+
+        return cls.query
+        .filter(or_
+        (
+        UserModel.hangout1==user.hangout1
+        , UserModel.hangout2==user.hangout2
+        , UserModel.hangout3==user.hangout3
+        , UserModel.hangout4==user.hangout4
+        )
+        )
+        .limit(20).all()
