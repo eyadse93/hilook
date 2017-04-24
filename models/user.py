@@ -122,14 +122,3 @@ class UserModel(db.Model):
             ), UserModel.country==user.country).limit(20).all()
         )
         return result
-
-subkeyword = (
-    Session.query(
-        Subkeyword.subkeyword_id,
-        Subkeyword.subkeyword_word
-    )
-    .filter_by(subkeyword_company_id=self.e_company_id)
-    .filter_by(subkeyword_word=subkeyword_word)
-    .filter_by(subkeyword_active=True)
-    .one()
-)
