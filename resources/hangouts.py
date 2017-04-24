@@ -13,6 +13,6 @@ class GetHangouts(Resource):
         data = GetHangouts.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
-            result = UserModel.find_hangouts(cls, user)
+            result = UserModel.find_hangouts(user)
             return result
             #print (result)
