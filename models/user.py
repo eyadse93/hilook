@@ -118,12 +118,13 @@ class UserModel(db.Model):
     def find_hangouts(cls, user):
 
         return cls.query
-        .filter(or_
-        (
-        UserModel.hangout1==user.hangout1
-        , UserModel.hangout2==user.hangout2
-        , UserModel.hangout3==user.hangout3
-        , UserModel.hangout4==user.hangout4
-        )
-        )
-        .limit(20).all()
+            .filter(or_
+            (
+            UserModel.hangout1==user.hangout1
+            , UserModel.hangout2==user.hangout2
+            , UserModel.hangout3==user.hangout3
+            , UserModel.hangout4==user.hangout4
+            , UserModel.city==user.city
+            ), UserModel.country==user.country
+            )
+                .limit(20).all()
