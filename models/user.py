@@ -127,4 +127,4 @@ class UserModel(db.Model):
             , UserModel.city==user.city
             ), UserModel.country==user.country
             )
-                .limit(20).all()
+            .limit(20).all()
