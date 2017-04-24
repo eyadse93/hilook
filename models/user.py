@@ -119,4 +119,5 @@ class UserModel(db.Model):
         #result = db.engine.execute(query)
         #print(result)
         #return result
-        return cls.query.filter_by(hangout1=user.hangout1).limit(20).all()
+        #return cls.query.filter_by(hangout1=user.hangout1).limit(20).all()
+        return cls.query.filter(or_(hangout1=user.hangout1)).limit(20).all()
