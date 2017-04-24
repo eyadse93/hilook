@@ -120,4 +120,4 @@ class UserModel(db.Model):
         #print(result)
         #return result
         #return cls.query.filter_by(hangout1=user.hangout1).limit(20).all()
-        return cls.query.filter(UserModel.hangout1==user.hangout1).limit(20).all()
+        return cls.query.filter(or_(UserModel.hangout1==user.hangout1, UserModel.hangout2==user.hangout2)).limit(20).all()
