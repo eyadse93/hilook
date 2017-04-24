@@ -116,4 +116,20 @@ class UserModel(db.Model):
 
     @classmethod
     def find_hangouts(cls, user):
-        return cls.query.filter(or_(UserModel.hangout1==user.hangout1, UserModel.hangout2==user.hangout2, UserModel.hangout3==user.hangout3, UserModel.hangout4==user.hangout4, UserModel.city==user.city), UserModel.country==user.country).limit(20).all()
+        result = (
+            cls.query.filter(or_(
+                UserModel.hangout1==user.hangout1, UserModel.hangout2==user.hangout2, UserModel.hangout3==user.hangout3, UserModel.hangout4==user.hangout4, UserModel.city==user.city
+            ), UserModel.country==user.country).limit(20).all()
+        )
+        return result
+
+subkeyword = (
+    Session.query(
+        Subkeyword.subkeyword_id,
+        Subkeyword.subkeyword_word
+    )
+    .filter_by(subkeyword_company_id=self.e_company_id)
+    .filter_by(subkeyword_word=subkeyword_word)
+    .filter_by(subkeyword_active=True)
+    .one()
+)
