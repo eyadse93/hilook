@@ -117,6 +117,6 @@ class UserModel(db.Model):
     @classmethod
     def find_hangouts(cls, user):
         #result = db.engine.execute(query)
-        print(result)
+        #print(result)
         #return result
         return cls.query.filter_by(hangout1=user.hangout1).limit(20).all()
