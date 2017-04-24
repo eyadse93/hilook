@@ -13,6 +13,9 @@ class GetHangouts(Resource):
         data = GetHangouts.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
-            result = UserModel.find_hangouts(user)
-            return result.json()
+            jsonResult = ""
+            results = UserModel.find_hangouts(user)
+            for result in results:
+                jsonResult = result.json()
+            return jsonResult
             #print (result)
