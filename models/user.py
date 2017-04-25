@@ -117,10 +117,24 @@ class UserModel(db.Model):
 
     @classmethod
     def find_hangouts(cls, user, f):
-        minAge = 0.0
-        maxAge = 0.0
-        timeNow = time.time() * 1000
         oneYearTime = 31556952000.0
+        timeNow = time.time() * 1000.0
+        minAge = timeNow
+        maxAge = 0.0
+
+        gender = "male"
+        if user.interested_in == "men":
+            gender = "male"
+        else:
+            gender = "female"
+
+        interested_in = "men"
+        if user.gender == "male":
+            interested_in = "men"
+        else:
+            interested_in = "women"
+
+
         if f==1:
             minAge = timeNow - (18.0 * oneYearTime)
             maxAge = timeNow - (25.0 * oneYearTime)
@@ -143,27 +157,15 @@ class UserModel(db.Model):
             minAge = timeNow - (50.0 * oneYearTime)
             maxAge = timeNow - (100.0 * oneYearTime)
 
-        if f > 0:
-            result = (
-                cls.query.filter(or_(
-                    UserModel.hangout1==user.hangout1,
-                     UserModel.hangout2==user.hangout2,
-                      UserModel.hangout3==user.hangout3,
-                       UserModel.hangout4==user.hangout4,
-                        UserModel.city==user.city
-                ), UserModel.country==user.country, UserModel.username != user.username, and_(
-                    UserModel.birthdate >= maxAge, UserModel.birthdate <= minAge
-                )).limit(20).all()
-            )
-            return result
-        else:
-            result = (
-                cls.query.filter(or_(
-                    UserModel.hangout1==user.hangout1,
-                     UserModel.hangout2==user.hangout2,
-                      UserModel.hangout3==user.hangout3,
-                       UserModel.hangout4==user.hangout4,
-                        UserModel.city==user.city
-                ), UserModel.country==user.country, UserModel.username != user.username).limit(20).all()
-            )
-            return result
+        result = (
+            cls.query.filter(or_(
+                UserModel.hangout1==user.hangout1,
+                 UserModel.hangout2==user.hangout2,
+                  UserModel.hangout3==user.hangout3,
+                   UserModel.hangout4==user.hangout4,
+                    UserModel.city==user.city
+            ), UserModel.country==user.country, UserModel.username != user.username, and_(
+                UserModel.birthdate >= maxAge, UserModel.birthdate <= minAge
+            ), UserModel.gender==gender, UserModel.interested_in==interested_in, UserModel.active, UserModel.hangouts_visible).limit(20).all()
+        )
+        return result
