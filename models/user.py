@@ -135,7 +135,7 @@ class UserModel(db.Model):
                   UserModel.hangout3==user.hangout3,
                    UserModel.hangout4==user.hangout4,
                     UserModel.city==user.city
-            ), UserModel.country==user.country, UserModel.username != user.username, or_(
+            ), UserModel.country==user.country, UserModel.username != user.username, and_(
                 UserModel.birthdate >= maxAge, UserModel.birthdate <= minAge
             )).limit(20).all()
         )
