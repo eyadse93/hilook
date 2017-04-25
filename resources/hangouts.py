@@ -22,7 +22,7 @@ class GetHangouts(Resource):
             return jsonResult
             #print (result)
 
-    @classmethod
+    #@classmethod
     def find_hangouts(cls, user):
         #we can move this to hangouts class
         result = (
