@@ -124,9 +124,9 @@ class UserModel(db.Model):
         if f==1:
             minAge = timeNow - (18.0 * oneYearTime)
             maxAge = timeNow - (25.0 * oneYearTime)
-            print("timeNow:" + timeNow)
-            print("minAge:" + minAge)
-            print("maxAge:" + maxAge)
+            #print("timeNow:" + timeNow)
+            #print("minAge:" + minAge)
+            #print("maxAge:" + maxAge)
 
         result = (
             cls.query.filter(or_(
