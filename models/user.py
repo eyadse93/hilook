@@ -120,7 +120,7 @@ class UserModel(db.Model):
         minAge = 0.0
         maxAge = 0.0
         timeNow = time.time()
-        oneYearTime = 31556952000.0
+        oneYearTime = 31556952.0
         if f==1:
             minAge = timeNow - (18.0 * oneYearTime)
             maxAge = timeNow - (25.0 * oneYearTime)
