@@ -3,6 +3,7 @@ from db import db
 from datetime import datetime
 from sqlalchemy import or_
 from sqlalchemy import and_
+import time
 
 class UserModel(db.Model):
     __tablename__ = 'users'
@@ -115,7 +116,18 @@ class UserModel(db.Model):
         return cls.query.filter_by(id=_id).first()
 
     @classmethod
-    def find_hangouts(cls, user):
+    def find_hangouts(cls, user, f):
+        minAge = 0.0
+        maxAge = 0.0
+        timeNow = time.time()
+        oneYearTime = 31556952000.0
+        if f==1:
+            minAge = timeNow - (18.0 * oneYearTime)
+            maxAge = timeNow - (25.0 * oneYearTime)
+            print("timeNow:" + timeNow)
+            print("minAge:" + minAge)
+            print("maxAge:" + maxAge)
+
         result = (
             cls.query.filter(or_(
                 UserModel.hangout1==user.hangout1,
@@ -125,4 +137,5 @@ class UserModel(db.Model):
                     UserModel.city==user.city
             ), UserModel.country==user.country, UserModel.username != user.username).limit(20).all()
         )
+
         return result
