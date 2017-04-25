@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 from models.user import UserModel
+from db import db
 
 class GetHangouts(Resource):
     parser = reqparse.RequestParser()
