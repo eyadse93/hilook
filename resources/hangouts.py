@@ -15,14 +15,14 @@ class GetHangouts(Resource):
         if user:
             jsonResult = []
             #results = UserModel.find_hangouts(user)
-            results = find_hangouts(user)
+            results = GetHangouts.find_hangouts(user)
             for result in results:
                 #jsonResult = jsonResult + result.json()
                 jsonResult.append(result.json())
             return jsonResult
             #print (result)
 
-    #@classmethod
+    @classmethod
     def find_hangouts(cls, user):
         #we can move this to hangouts class
         result = (
