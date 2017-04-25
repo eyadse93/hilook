@@ -116,7 +116,6 @@ class UserModel(db.Model):
 
     @classmethod
     def find_hangouts(cls, user):
-        #we can move this to hangouts class
         result = (
             cls.query.filter(or_(
                 UserModel.hangout1==user.hangout1,
