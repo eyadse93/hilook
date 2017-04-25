@@ -127,17 +127,43 @@ class UserModel(db.Model):
             print("timeNow:" + str(timeNow))
             print("minAge:" + str(minAge))
             print("maxAge:" + str(maxAge))
+            #max:  704237795961
+            #user: 735779017393
+            #min:  925136459961
+        elif f==2:
+            minAge = timeNow - (26.0 * oneYearTime)
+            maxAge = timeNow - (33.0 * oneYearTime)
+        elif f==3:
+            minAge = timeNow - (34.0 * oneYearTime)
+            maxAge = timeNow - (41.0 * oneYearTime)
+        elif f==4:
+            minAge = timeNow - (42.0 * oneYearTime)
+            maxAge = timeNow - (50.0 * oneYearTime)
+        elif f==5:
+            minAge = timeNow - (50.0 * oneYearTime)
+            maxAge = timeNow - (100.0 * oneYearTime)
 
-        result = (
-            cls.query.filter(or_(
-                UserModel.hangout1==user.hangout1,
-                 UserModel.hangout2==user.hangout2,
-                  UserModel.hangout3==user.hangout3,
-                   UserModel.hangout4==user.hangout4,
-                    UserModel.city==user.city
-            ), UserModel.country==user.country, UserModel.username != user.username, and_(
-                UserModel.birthdate >= maxAge, UserModel.birthdate <= minAge
-            )).limit(20).all()
-        )
-
-        return result
+        if f > 0:
+            result = (
+                cls.query.filter(or_(
+                    UserModel.hangout1==user.hangout1,
+                     UserModel.hangout2==user.hangout2,
+                      UserModel.hangout3==user.hangout3,
+                       UserModel.hangout4==user.hangout4,
+                        UserModel.city==user.city
+                ), UserModel.country==user.country, UserModel.username != user.username, and_(
+                    UserModel.birthdate >= maxAge, UserModel.birthdate <= minAge
+                )).limit(20).all()
+            )
+            return result
+        else:
+            result = (
+                cls.query.filter(or_(
+                    UserModel.hangout1==user.hangout1,
+                     UserModel.hangout2==user.hangout2,
+                      UserModel.hangout3==user.hangout3,
+                       UserModel.hangout4==user.hangout4,
+                        UserModel.city==user.city
+                ), UserModel.country==user.country, UserModel.username != user.username)).limit(20).all()
+            )
+            return result
