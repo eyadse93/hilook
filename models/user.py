@@ -167,8 +167,9 @@ class UserModel(db.Model):
                     UserModel.city==user.city
             ), UserModel.country==user.country, UserModel.username != user.username, and_(
                 UserModel.birthdate >= maxAge, UserModel.birthdate <= minAge
-            ), UserModel.gender==gender, UserModel.interested_in==interested_in, UserModel.active, UserModel.hangouts_visible, or_(
-                and_(BlockedUsersModel.userId==user.username, BlockedUsersModel.blockedId==UserModel.username),and_(
-                    BlockedUsersModel.userId==UserModel.username, BlockedUsersModel.blockedId==user.username))).limit(20).all()
+            ), UserModel.gender==gender, UserModel.interested_in==interested_in, UserModel.active, UserModel.hangouts_visible).all()
         )
+
+        #cls.query.filter(BlockedUsersModel.userId)
+
         return result
