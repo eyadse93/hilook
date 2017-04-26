@@ -41,7 +41,7 @@ class BlockedUsersModel(db.Model):
         ).all()
         print(len(blockedUsernames))
         for r in results:
-            print("looping"))
+            print("looping")
             if r.username in blockedUsernames:
                 print("if")
                 results.remove(r)
