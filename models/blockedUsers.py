@@ -40,8 +40,10 @@ class BlockedUsersModel(db.Model):
             )
         ).all()
         print(len(blockedUsernames))
-        for result in results:
-            if result.username in blockedUsernames:
-                results.remove(result)
-
+        for r in results:
+            print("looping"))
+            if r.username in blockedUsernames:
+                print("if")
+                results.remove(r)
+        print(len(results))
         return results
