@@ -38,7 +38,7 @@ class BlockedUsersModel(db.Model):
                     BlockedUsersModel.blockedId.in_(usernames), BlockedUsersModel.userId==user.username
                 )
             )
-        )
+        ).all()
         print(len(blockedUsernames))
         for result in results:
             if result.username in blockedUsernames:
