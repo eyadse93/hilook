@@ -35,7 +35,7 @@ class BlockedUsersModel(db.Model):
                     BlockedUsersModel.blockedId.in_(usernames), BlockedUsersModel.userId==user.username
                 )
             )
-
+        )
         for result in results:
             if result.username in blockedUsernames:
                 results.remove(result)
