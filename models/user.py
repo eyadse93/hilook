@@ -156,7 +156,7 @@ class UserModel(db.Model):
         elif f==5:
             minAge = timeNow - (50.0 * oneYearTime)
             maxAge = timeNow - (100.0 * oneYearTime)
-
+            #sort by distance http://stackoverflow.com/questions/29013805/how-to-order-a-geospatial-query-by-distance-from-the-query-point
         result = (
             cls.query.filter(or_(
                 UserModel.hangout1==user.hangout1,
@@ -166,6 +166,8 @@ class UserModel(db.Model):
                     UserModel.city==user.city
             ), UserModel.country==user.country, UserModel.username != user.username, and_(
                 UserModel.birthdate >= maxAge, UserModel.birthdate <= minAge
-            ), UserModel.gender==gender, UserModel.interested_in==interested_in, UserModel.active, UserModel.hangouts_visible).limit(20).all()
+            ), UserModel.gender==gender, UserModel.interested_in==interested_in, UserModel.active, UserModel.hangouts_visible, or_(
+                and_(BlockedUsers.user_id==user.username, BlockedUsers.blocked_id==UserModel.username),and_(
+                    BlockedUsers.user_id==UserModel.username, BlockedUsers.blocked_id==user.username)).limit(20).all()
         )
         return result
