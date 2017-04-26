@@ -1,5 +1,5 @@
 from db import db
-from models.user import UserModel
+#from models.user import UserModel
 
 class BlockedUsersModel(db.Model):
     __tablename__ = 'blockedUsers'
