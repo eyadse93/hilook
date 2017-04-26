@@ -39,6 +39,7 @@ class BlockedUsersModel(db.Model):
                 )
             )
         )
+        print(len(blockedUsernames))
         for result in results:
             if result.username in blockedUsernames:
                 results.remove(result)
