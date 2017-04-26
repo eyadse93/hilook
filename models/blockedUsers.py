@@ -1,4 +1,7 @@
 from db import db
+from sqlalchemy import or_
+from sqlalchemy import and_
+
 #from models.user import UserModel
 
 class BlockedUsersModel(db.Model):
