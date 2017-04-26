@@ -23,9 +23,9 @@ class GetHangouts(Resource):
         if user:
             jsonResult = []
             results = UserModel.find_hangouts(user, data['filter'])
-
+            print(len(results))
             results = BlockedUsersModel.filter(user, results)
-
+            print(len(results))
             for result in results:
                 jsonResult.append(result.json())
             return jsonResult
