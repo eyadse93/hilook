@@ -168,6 +168,6 @@ class UserModel(db.Model):
                 UserModel.birthdate >= maxAge, UserModel.birthdate <= minAge
             ), UserModel.gender==gender, UserModel.interested_in==interested_in, UserModel.active, UserModel.hangouts_visible, or_(
                 and_(BlockedUsers.user_id==user.username, BlockedUsers.blocked_id==UserModel.username),and_(
-                    BlockedUsers.user_id==UserModel.username, BlockedUsers.blocked_id==user.username)).limit(20).all()
+                    BlockedUsers.user_id==UserModel.username, BlockedUsers.blocked_id==user.username))).limit(20).all()
         )
         return result
