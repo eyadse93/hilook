@@ -31,7 +31,7 @@ class BlockedUsersModel(db.Model):
         blockedUsernames = cls.query.filter(or_(
             and_(
                 BlockedUsersModel.userId.in_(usernames), BlockedUsersModel.blockedId==user.username
-                )and_(
+                ), and_(
                     BlockedUsersModel.blockedId.in_(usernames), BlockedUsersModel.userId==user.username
                 )
             )
