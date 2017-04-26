@@ -4,6 +4,7 @@ from datetime import datetime
 from sqlalchemy import or_
 from sqlalchemy import and_
 import time
+from models.blockedUsers import BlockedUsersModel
 
 class UserModel(db.Model):
     __tablename__ = 'users'
