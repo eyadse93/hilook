@@ -1,4 +1,5 @@
 from db import db
+from model.user import UserModel
 
 class BlockedUsersModel(db.Model):
     __tablename__ = 'blockedUsers'
@@ -21,3 +22,22 @@ class BlockedUsersModel(db.Model):
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
+
+    @classmethod
+    def filter(cls, user, results):
+        usernames = []
+        for result in results:
+            usernames.append(result.username)
+        blockedUsernames = cls.query.filter(or_(
+            and_(
+                BlockedUsersModel.userId.in_(usernames), BlockedUsersModel.blockedId==user.username
+                )and_(
+                    BlockedUsersModel.blockedId.in_(usernames), BlockedUsersModel.userId==user.username
+                )
+            )
+
+        for result in results:
+            if result.username in blockedUsernames:
+                results.remove(result)
+
+        return results

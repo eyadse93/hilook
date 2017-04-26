@@ -1,5 +1,7 @@
 from flask_restful import Resource, reqparse
 from models.user import UserModel
+from models.blockedUsers import BlockedUsersModel
+
 from db import db
 
 class GetHangouts(Resource):
@@ -21,6 +23,9 @@ class GetHangouts(Resource):
         if user:
             jsonResult = []
             results = UserModel.find_hangouts(user, data['filter'])
+
+            results = BlockedUsersModel.filter(user, results)
+
             for result in results:
                 jsonResult.append(result.json())
             return jsonResult
