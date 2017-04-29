@@ -78,7 +78,6 @@ class UserRegister(Resource):
         user.save_to_db()
         return user.json(), 200
 
-
 class GetUserData(Resource):
     parser = reqparse.RequestParser()
     #parser = parser.replace("\\", "")

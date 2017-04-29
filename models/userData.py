@@ -38,7 +38,7 @@ class UserDataModel(db.Model):
                     UserDataModel.user2.in_(usernames), UserDataModel.user1==user.username
                 )
             )
-        ).all()
+        ).limit(20).all()
         print(len(userDataNames))
         for r in results:
             print("looping")
