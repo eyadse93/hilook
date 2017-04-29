@@ -6,11 +6,7 @@ from flask_jwt import JWT
 
 from security import authenticate, identity
 from resources.user import UserRegister, UserLogin, GetUserData, SetUserData, UserDelete
-from resources.item import Item, ItemList
-from resources.store import Store, StoreList
 from resources.hangouts import GetHangouts
-
-
 from resources.version import AppVersion
 
 import threading
@@ -22,11 +18,6 @@ app.secret_key = 'jose'
 api = Api(app)
 
 jwt = JWT(app, authenticate, identity)  # /auth
-
-api.add_resource(Store, '/store/<string:name>')
-api.add_resource(Item, '/item/<string:name>')
-api.add_resource(ItemList, '/items')
-api.add_resource(StoreList, '/stores')
 
 api.add_resource(AppVersion, '/version')
 api.add_resource(UserLogin, '/login')
