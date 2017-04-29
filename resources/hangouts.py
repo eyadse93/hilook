@@ -28,7 +28,8 @@ class GetHangouts(Resource):
             results = BlockedUsersModel.filter(user, results)
             #print(len(results))
             results = UserDataModel.filter(user, results)
-            print("result num" + len(results))
+            print("result num")
+            print(len(results))
             for result in results:
                 jsonResult.append(result.json())
             return jsonResult
