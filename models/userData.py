@@ -2,19 +2,21 @@ from db import db
 from sqlalchemy import or_
 from sqlalchemy import and_
 
-class BlockedUsersModel(db.Model):
-    __tablename__ = 'blockedUsers'
+class UserDataModel(db.Model):
+    __tablename__ = 'userData'
 
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.String(80))
-    blockedId = db.Column(db.String(80))
+    user1 = db.Column(db.String(80))
+    user2 = db.Column(db.String(80))
+    dataType = db.Column(db.String(80))
+    looked = db.Column(db.Boolean)
 
     def __init__(self, userId, blockedId):
         self.userId = userId
         self.blockedId = blockedId
 
     def json(self):
-        return {'userId': self.userId, 'blockedId': self.blockedId}
+        return {'user1': self.user1, 'user2': self.user2}
 
     def save_to_db(self):
         db.session.add(self)
@@ -29,19 +31,19 @@ class BlockedUsersModel(db.Model):
         usernames = []
         for result in results:
             usernames.append(result.username)
-        blockedUsernames = cls.query.filter(or_(
+        userDataNames = cls.query.filter(or_(
             and_(
-                BlockedUsersModel.userId.in_(usernames), BlockedUsersModel.blockedId==user.username
+                UserDataModel.user1.in_(usernames), UserDataModel.user2==user.username
                 ), and_(
-                    BlockedUsersModel.blockedId.in_(usernames), BlockedUsersModel.userId==user.username
+                    UserDataModel.user2.in_(usernames), UserDataModel.user1==user.username
                 )
             )
         ).all()
-        print(len(blockedUsernames))
+        print(len(userDataNames))
         for r in results:
             print("looping")
-            for b in blockedUsernames:
-                if r.username == b.userId or r.username == b.blockedId:
+            for b in userDataNames:
+                if r.username == b.user1 or r.username == b.user2:
                     print("if")
                     results.remove(r)
         return results
