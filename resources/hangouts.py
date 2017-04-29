@@ -19,7 +19,7 @@ class GetHangouts(Resource):
     )
 
     def post(self):
-        pagination = 20
+        pagination = 10
         data = GetHangouts.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
