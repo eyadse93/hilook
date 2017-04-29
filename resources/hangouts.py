@@ -1,6 +1,7 @@
 from flask_restful import Resource, reqparse
 from models.user import UserModel
 from models.blockedUsers import BlockedUsersModel
+from models.blockedUsers import UserDataModel
 
 from db import db
 
