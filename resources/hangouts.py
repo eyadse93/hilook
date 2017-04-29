@@ -23,9 +23,9 @@ class GetHangouts(Resource):
     )
 
     def post(self):
+        data = GetHangouts.parser.parse_args()
         skip = data['skip']
         pagination = 10 + skip
-        data = GetHangouts.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
             jsonResult = []
