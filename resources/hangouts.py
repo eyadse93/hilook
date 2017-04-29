@@ -19,6 +19,7 @@ class GetHangouts(Resource):
     )
 
     def post(self):
+        pagination = 20
         data = GetHangouts.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user:
@@ -30,7 +31,12 @@ class GetHangouts(Resource):
             results = UserDataModel.filter(user, results)
             print("result num")
             print(len(results))
+            flag = 0
             for result in results:
-                jsonResult.append(result.json())
+                flag = flag + 1
+                if (flag > pagination):
+                    break
+                else:
+                    jsonResult.append(result.json())
             return jsonResult
             #print (result)
