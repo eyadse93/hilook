@@ -23,6 +23,7 @@ class GetHangouts(Resource):
     )
 
     def post(self):
+        skip = data['skip']
         pagination = 10 + skip
         data = GetHangouts.parser.parse_args()
         user = UserModel.find_by_username(data['username'])
